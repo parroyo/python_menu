@@ -1,0 +1,358 @@
+common:
+  backtitle: This is the back title
+  height: 10
+
+
+main:
+  type: menu
+  text: Menu
+  backtitle: other backtitle
+  height: 40
+  menu_height: 36
+  choices:
+    - ['1', 'menu'] # ok
+    - ['2', 'msgbox'] # ok
+    - ['3', 'yesno'] # ok
+    - ['4', 'inputbox'] # ok
+    - ['5', 'textbox'] # ONLY py3
+    - ['6', 'passwordbox'] # ok
+    - ['7', 'scrollbox'] # only py3
+    - ['8', 'editbox'] # ok
+    - ['9', 'progressbox'] # Se muestra y vuelve
+    - ['10', 'programbox'] # ok
+    - ['11', 'tailbox'] # only py3
+    - ['12', 'infobox'] # Se muestra y vuelve
+    - ['13', 'pause'] # ok
+    - ['14', 'gauge'] # Bucle infinito!
+    - ['18', 'mixedgauge'] # Bucle infinito
+    - ['19', 'buildlist'] # Sólo se ven cajas en negro?
+    - ['20', 'checklist']  # ok
+    - ['21', 'radiolist'] # ok
+    - ['22', 'treeview'] # ok
+    - ['23', 'inputmenu']  # No estamos recogiendo el 3er valor de la tupla de retorno
+    - ['24', 'form']  # ok
+    - ['25', 'mixedform']  # ok
+    - ['26', 'passwordform'] # Igual que form
+    - ['27', 'dselect']  # ok
+    - ['28', 'fselect']  # ok
+    - ['29', 'calendar']  # ok
+    - ['30', 'timebox']  # ok
+    - ['31', 'rangebox']  # ok
+    - ['32', 'custom'] # Falta implementarlo
+    - ['33', 'exit'] # ok
+
+  action:
+    ok:
+      '1': go menu
+      '2': go msgbox
+      '3': go yesno
+      '4': go inputbox
+      '5': go textbox
+      '6': go passwordbox
+      '7': go scrollbox
+      '8': go editbox
+      '9': go progressbox
+      '10': go programbox
+      '11': go tailbox
+      '12': go infobox
+      '13': go pause
+      '14': gauge
+      '18': go mixedgauge
+      '19': go buildlist
+      '20': go checklist
+      '21': go radiolist
+      '22': go treeview
+      '23': go inputmenu
+      '24': go form
+      '25': go mixedform
+      '26': go passwordform
+      '27': go dselect
+      '28': go fselect
+      '29': go calendar
+      '30': go timebox
+      '31': go rangebox
+      '32': # Custom action
+        - clear
+        - custom
+        - clear
+        - [custom2, {'a1': self.get_value('3')}]
+        - exit
+      '33': exit
+    cancel: go back
+
+
+results:
+  type: msgbox
+  text: "This should show the previous input"
+  action:
+    ok:
+      - go back
+      - go back
+
+# menu
+menu:
+  type: menu
+  text: "menu"
+  height: 15
+  choices:
+    - ['1', 'one']
+    - ['2', 'two']
+  action:
+    ok : go back
+    cancel: go back
+
+# yesno
+yesno:
+  type: yesno
+  text: "yesno"
+  action:
+    ok : go back
+    cancel: go back
+
+# msgbox
+msgbox:
+  type: msgbox
+  text: "This is a message box
+  \n\n\nClosing the box you will return to the main menu."
+  action:
+    ok:
+      - go back
+
+# inputbox
+inputbox:
+  type: inputbox
+  text: This is a inputbox
+  action:
+    ok : go results
+    cancel: go back
+
+# textbox
+textbox:
+  type: textbox
+  filepath: "menu.yaml"
+  action:
+    ok : go back
+    cancel: go back
+
+# scrollbox
+scrollbox:
+  type: scrollbox
+  text: This is a scrollbox
+  action:
+    ok : go results
+    cancel: go back
+
+# editbox
+editbox:
+  type: editbox
+  filepath: "menu.yaml"
+  action:
+    ok : go back
+    cancel: go back
+
+# progressbox
+progressbox:
+  type: progressbox
+  file_path: "menu.yaml"
+  action:
+    ok : go back
+    cancel: go back
+
+# programbox
+programbox:
+  type: programbox
+  file_path: "menu.yaml"
+  action:
+    ok : go back
+    cancel: go back
+
+# tailbox
+tailbox:
+  type: tailbox
+  filepath: "menu.yaml"
+  action:
+    ok : go back
+    cancel: go back
+
+#infobox
+    
+
+# mixedgauge
+mixedgauge:
+  type: mixedgauge
+  text: This is a gauge_start
+  percent: 10
+  elements:
+    - ['task1', 'Succeeded']
+    - ['task2', 'Failed']
+#    “Passed”, “Completed”, “Done”, “Skipped”, “In Progress”, “Checked”, “N/A” or a progress bar.
+
+
+# buildlist
+buildlist:
+  type: buildlist
+  text: This is a buildlist
+  list_height: 20
+  choices:
+    - ['one', 'item_one', 'on']
+    - ['two','item_two', 'off']
+    - ['three','item_three', 'off']
+    - ['four','item_four', 'off']
+  action:
+    ok : go back
+    cancel: go back
+
+# checklist
+checklist:
+  type: checklist
+  text: This is a checklist
+  choices:
+    - ['one', 'item_one', 'on']
+    - ['two','item_two', 'off']
+  action:
+    ok : go back
+    cancel: go back
+
+# radiolist
+radiolist:
+  type: radiolist
+  text: This is a radiolist
+  choices:
+    - ['one', 'item_one', 'on']
+    - ['two','item_two', 'off']
+  action:
+    ok : go back
+    cancel: go back
+
+# treeview
+treeview:
+  type: treeview
+  text: This is a treeview
+  nodes:
+    - ['0', 'root', 'off', 0]
+    - ['1', 'node1', 'off', 1]
+    - ['2', 'node2', 'off', 1]
+    - ['3', 'node2-1', 'off', 2]
+    - ['4', 'node2-1-1', 'on', 3]
+    - ['5', 'node3', 'off', 1]
+  action:
+    ok : go results
+    cancel: go back
+
+# form
+form:
+  type: form
+  text: This is a form
+  elements:
+    - ['one', 1, 1, 'initial_value_one', 1, 10, 20, 0]
+    - ['two', 2, 1, 'initial_value_two', 2, 10, 20, 0]
+    - ['three', 5, 5, 'initial_value_three', 5, 15, 20, 40]
+  action:
+    ok : go results
+    cancel: go back
+
+# mixedform
+mixedform:
+  type: mixedform
+  text: This is a mixedform
+  elements:
+    - ['one', 1, 1, 'initial_value_one', 1, 10, 20, 0, 0]
+    - ['password', 2, 1, 'initial_value_two', 2, 10, 20, 0, 1]
+    - ['three', 5, 5, 'initial_value_three', 5, 15, 20, 40, 0]
+  action:
+    ok : go results
+    cancel: go back
+
+# passwordform
+passwordform:
+  type: passwordform
+  text: This is a passwordform
+  elements:
+    - ['one', 1, 1, 'initial_value_one', 1, 10, 20, 0]
+    - ['two', 2, 1, 'initial_value_two', 2, 10, 20, 0]
+    - ['three', 5, 5, 'initial_value_three', 5, 15, 20, 40]
+  action:
+    ok : go results
+    cancel: go back
+
+# inputmenu
+inputmenu:
+  type: inputmenu
+  text: This is a inputmenu
+  choices:
+    - ['one', 'item_one']
+    - ['two', 'item_two']
+  action:
+    accepted : go back
+    cancel: go back
+
+# dselect
+dselect:
+  type: dselect
+  filepath: ''
+  action:
+    ok : go back
+    cancel: go back
+
+# fselect
+fselect:
+  type: fselect
+  filepath: ''
+  action:
+    ok : go back
+    cancel: go back
+
+# calendar
+calendar:
+  type: calendar
+  text: This is a calendar
+  action:
+    ok : go back
+    cancel: go back
+
+# timebox
+timebox:
+  type: timebox
+  text: This is a timebox
+  action:
+    ok : go back
+    cancel: go back
+
+# rangebox
+rangebox:
+  type: rangebox
+  text: This is a rangebox
+  min: 0
+  max: 10
+  init: 5
+  action:
+    ok : go back
+    cancel: go back
+
+
+infobox:
+  type: infobox
+  text: "This is a info box"
+  action:
+    ok : go back
+
+passwordbox:
+  type: passwordbox
+  text: This is a passwordbox
+  action:
+    ok : go results
+    cancel: go back
+
+pause:
+  type: pause
+  text: This is a pause
+  seconds: 5
+  action:
+    ok : go back
+    cancel: go back
+
+gauge_start:
+  type: gauge_start
+  text: This is a gauge_start
+  percent: 0
+
