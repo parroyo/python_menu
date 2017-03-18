@@ -14,31 +14,31 @@ main:
     - ['2', 'msgbox'] # ok
     - ['3', 'yesno'] # ok
     - ['4', 'inputbox'] # ok
-    - ['5', 'textbox'] # ONLY py3
+    - ['5', 'textbox'] # only py3
     - ['6', 'passwordbox'] # ok
     - ['7', 'scrollbox'] # only py3
     - ['8', 'editbox'] # ok
-    - ['9', 'progressbox'] # Se muestra y vuelve
+    - ['9', 'progressbox'] # ko
     - ['10', 'programbox'] # ok
     - ['11', 'tailbox'] # only py3
-    - ['12', 'infobox'] # Se muestra y vuelve
+    - ['12', 'infobox'] # ko
     - ['13', 'pause'] # ok
-    - ['14', 'gauge'] # Bucle infinito!
-    - ['18', 'mixedgauge'] # Bucle infinito
-    - ['19', 'buildlist'] # Sólo se ven cajas en negro?
+    - ['14', 'gauge'] # ko
+    - ['18', 'mixedgauge'] # ko
+    - ['19', 'buildlist'] # ko
     - ['20', 'checklist']  # ok
     - ['21', 'radiolist'] # ok
     - ['22', 'treeview'] # ok
-    - ['23', 'inputmenu']  # No estamos recogiendo el 3er valor de la tupla de retorno
+    - ['23', 'inputmenu']  # ko
     - ['24', 'form']  # ok
     - ['25', 'mixedform']  # ok
-    - ['26', 'passwordform'] # Igual que form
+    - ['26', 'passwordform'] # ok
     - ['27', 'dselect']  # ok
     - ['28', 'fselect']  # ok
     - ['29', 'calendar']  # ok
     - ['30', 'timebox']  # ok
     - ['31', 'rangebox']  # ok
-    - ['32', 'custom'] # Falta implementarlo
+    - ['32', 'custom'] # ko
     - ['33', 'exit'] # ok
 
   action:
